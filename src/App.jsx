@@ -4,6 +4,8 @@ import { useState } from "react";
 import { useTable } from "react-table";
 import axios from "axios";
 import { FiChevronRight, FiChevronDown } from "react-icons/fi";
+import Spinner from './components/Spinner';
+
 
 function App() {
   // State variables
@@ -26,12 +28,6 @@ function App() {
       });
   }, []);
 
-  // // Toggle function to expand or collapse rows
-  // const toggleRow = (index) => {
-  //   const newData = [...data];
-  //   newData[index].isExpanded = !newData[index].isExpanded;
-  //   setData(newData);
-  // };
   const toggleRow = (index) => {
     setExpandedRows((prevExpandedRows) => ({
       ...prevExpandedRows,
@@ -78,6 +74,13 @@ function App() {
   // Rendering the table
   // Rendering the table
   return (
+
+
+
+    <>
+    {loading ? (
+      <Spinner loading={loading} />
+    ) : (
     <div className="App">
       <div className="container">
         <table {...getTableProps()}>
@@ -139,6 +142,8 @@ function App() {
         </table>
       </div>
     </div>
+      )}
+      </>
   );
 }
 
