@@ -66,6 +66,7 @@ function App() {
     []
   );
 
+  
   // Table instance using React Table
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     useTable({ columns, data });
@@ -108,7 +109,7 @@ function App() {
               const isExpanded = expandedRows[index];
               return (
                 <>
-                  <tr {...row.getRowProps()}>
+                  <tr  {...row.getRowProps()}>
                     <td>
                       <button onClick={() => toggleRow(index)}>
                         {isExpanded ? <FiChevronDown /> : <FiChevronRight />}
@@ -121,19 +122,30 @@ function App() {
                   {isExpanded && (
   <tr>
     <td colSpan={columns.length + 1}>
-      <div>
-        <p>Order Information:</p>
-        {row.original.orders.map((order) => (
-          <div key={order.orderId}>
-            <p>Order ID: {order.orderId}</p>
-            <p>Product: {order.product}</p>
-            <p>Quantity: {order.quantity}</p>
-          </div>
-        ))}
+      <div className="expanded-content">
+        <table>
+          <thead>
+            <tr>
+              <th>Order ID</th>
+              <th>Product</th>
+              <th>Quantity</th>
+            </tr>
+          </thead>
+          <tbody>
+            {row.original.orders.map((order) => (
+              <tr key={order.orderId}>
+                <td>{order.orderId}</td>
+                <td>{order.product}</td>
+                <td>{order.quantity}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </td>
   </tr>
 )}
+
 
                 </>
               );

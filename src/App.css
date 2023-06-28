@@ -53,3 +53,16 @@ tbody td:hover:before {
   background-color: rgba(255, 255, 255, 0.2);
   z-index: -1;
 }
+/* .expanded-content {
+  display: grid;
+  grid-template-columns: auto;
+  gap: 5px;
+}
+
+.column-header {
+  font-weight: bold;
+}
+
+.column-value {
+  margin-top: 5px;
+} */
